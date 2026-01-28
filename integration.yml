@@ -1,0 +1,21 @@
+pool:
+  vmImage: ububtu-latest
+stages:
+  - stage: ci
+    displayName: Continuous Integration
+    jobs:
+    - job: build
+      displayName: Build Project Assests
+      container: mcr.microsoft.com/dotnet/sdk:6.0
+      steps:
+      - script: |
+          dotnet publish \
+          --configuration Release
+          --output out
+          --self-contained
+          --runtime win-x64
+          -p:EnableCompressionInSingleFile=true \
+          -p:PublishSingleFile=true \
+          -P:PublishReadyToRun=true \
+          -p:DebugType=embedded
+        displayName: Publish .NET console Project
