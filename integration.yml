@@ -1,5 +1,5 @@
 pool:
-  vmImage: ububtu-latest
+  vmImage: ubuntu-latest
 stages:
   - stage: ci
     displayName: Continuous Integration
