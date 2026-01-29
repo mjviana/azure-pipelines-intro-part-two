@@ -19,7 +19,7 @@ stages:
           -P:PublishReadyToRun=true \
           -p:DebugType=embedded 
         displayName: Publish .NET console Project
-      - publish: out/Contoso.Spaces.Console.exe
+      - publish: out/Mjv.Azure.Pipelines.Intro.exe
         displayName: Upload console app artifact
         artifact: console-app
       - script: |
@@ -27,7 +27,7 @@ stages:
           --output pkg \
           -p:Version=1.0.0
         displayName: Package dotnet tool
-      - publish: pkg/Contoso.Spaces.Console.1.0.0.nupkg
+      - publish: pkg/Mjv.Azure.Pipelines.Intro.1.0.0.nupkg
         displayName: Upload package artifact
         artifact: nuget-package
     - job: release
@@ -40,7 +40,7 @@ stages:
           artifact: nuget-package
         - script: |
             dotnet nuget push \
-            Contoso.Spaces.Console.1.0.0.nupkg \
+            Mjv.Azure.Pipelines.Intro \
             --skip-duplicate \
             --api-key $(nuget-api-key) \
             --source https://api.nuget.org/v3/index.json
