@@ -18,4 +18,6 @@ stages:
           -p:PublishSingleFile=true \
           -P:PublishReadyToRun=true \
           -p:DebugType=embedded
+          echo "Listing contents of the out folder:"
+          ls -la out
         displayName: Publish .NET console Project
