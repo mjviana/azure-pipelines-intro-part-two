@@ -22,3 +22,11 @@ stages:
       - publish: out/Contoso.Spaces.Console.exe
         displayName: Upload console app artifact
         artifact: console-app
+      - script: |
+          dotnet pack \
+          --output pgk \
+          -p:Version=1.0.0
+        displayName: Package dotnet tool
+      - publish: pgk/Contoso.Spaces.Console.1.0.0.nupk
+        displayName: Upload package artifact
+        artifact: nuget-package
