@@ -5,15 +5,15 @@ stages:
     displayName: Continuous Integration
     jobs:
     - job: build
-      displayName: Build Project Assests
+      displayName: Build Project Assets
       container: mcr.microsoft.com/dotnet/sdk:6.0
       steps:
       - script: |
           dotnet publish \
-          --configuration Release
-          --output out
-          --self-contained
-          --runtime win-x64
+          --configuration Release \
+          --output out \
+          --self-contained \
+          --runtime win-x64 \
           -p:EnableCompressionInSingleFile=true \
           -p:PublishSingleFile=true \
           -P:PublishReadyToRun=true \
