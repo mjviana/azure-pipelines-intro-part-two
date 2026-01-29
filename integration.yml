@@ -40,7 +40,7 @@ stages:
           artifact: nuget-package
         - script: |
             dotnet nuget push \
-            pkg/Mjv.Azure.Pipelines.Intro.1.0.0.nupkg \
+            Mjv.Azure.Pipelines.Intro.1.0.0.nupkg \
             --skip-duplicate \
             --api-key $(nuget-api-key) \
             --source https://api.nuget.org/v3/index.json
