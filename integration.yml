@@ -38,3 +38,11 @@ stages:
         - download: current
           displayName: Download package artifact
           artifact: nuget-package
+        - script: |
+            dotnet nuget push \
+            Contoso.Spaces.Console.1.0.0.nupkg \
+            --skip-duplicate \
+            --api-key $(nuget-api-key)
+            --source https://api.nuget.org/v3/index.json
+          displayName: Push to NuGet.org
+          workingDirectory: $(Pipeline.Workspace)/nuget-package
