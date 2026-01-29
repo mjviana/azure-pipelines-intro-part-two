@@ -30,3 +30,11 @@ stages:
       - publish: pkg/Contoso.Spaces.Console.1.0.0.nupkg
         displayName: Upload package artifact
         artifact: nuget-package
+    - job: release
+      displayName: Release on NuGet
+      dependsOn: build
+      container: mcr.microsoft.com/dotnet/sdk:6.0
+      steps:
+        - download: current
+          displayName: Download package artifact
+          artifact: nuget-package
